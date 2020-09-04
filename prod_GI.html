@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="prod.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+    
+    <link href="styles.pure.css" rel="stylesheet" type="text/css">
+
+
+  <style>
+
+      body{
+         
+          font-family: Inter, sans-serif;
+  
+      }
+
+      /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}[hidden]{display:none}a{background-color:transparent}a:active,a:hover{outline:0}b{font-weight:700}img{border:0}svg:not(:root){overflow:hidden}input,select{color:inherit;font:inherit;margin:0}select{text-transform:none}html input[type=button],input[type=reset]{-webkit-appearance:button;cursor:pointer}html input[disabled]{cursor:default}input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:none}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}@font-face{font-family:webflow-icons;src:url("data:application/x-font-ttf;charset=utf-8;base64,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") format('truetype');font-weight:400;font-style:normal}[class*=" w-icon-"],[class^=w-icon-]{font-family:webflow-icons!important;speak:none;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{height:100%}body{margin:0;min-height:100%;background-color:#fff;font-family:Arial,sans-serif;font-size:14px;line-height:20px;color:#333}img{max-width:100%;vertical-align:middle;display:inline-block}.w-block{display:block}html[data-w-dynpage] [data-w-cloak]{color:transparent!important}html input[type=button],input[type=reset]{border:0;cursor:pointer;-webkit-appearance:button}label{display:block;margin-bottom:5px;font-weight:700}.w-input,.w-select{display:block;width:100%;height:38px;padding:8px 12px;margin-bottom:10px;font-size:14px;line-height:1.42857143;color:#333;vertical-align:middle;background-color:#fff;border:1px solid #ccc}.w-input:-moz-placeholder,.w-select:-moz-placeholder{color:#999}.w-input::-moz-placeholder,.w-select::-moz-placeholder{color:#999;opacity:1}.w-input:-ms-input-placeholder,.w-select:-ms-input-placeholder{color:#999}.w-input::-webkit-input-placeholder,.w-select::-webkit-input-placeholder{color:#999}.w-input:focus,.w-select:focus{border-color:#3898ec;outline:0}.w-input[disabled],.w-input[readonly],.w-select[disabled],.w-select[readonly]{cursor:not-allowed;background-color:#eee}.w-select{background-color:#f3f3f3}.w-select[multiple]{height:auto}[data-nav-menu-open]{display:block!important;position:absolute;top:100%;left:0;right:0;background:#c8c8c8;text-align:center;overflow:visible;min-width:200px}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.w-commerce-commerceaddtocartquantityinput{background-color:#fafafa;border-top-style:solid;border-top-width:1px;border-top-color:#ddd;border-right-style:solid;border-right-width:1px;border-right-color:#ddd;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#ddd;border-left-style:solid;border-left-width:1px;border-left-color:#ddd;border-bottom-left-radius:3px;border-bottom-right-radius:3px;border-top-left-radius:3px;border-top-right-radius:3px;display:block;height:38px;line-height:20px;margin-bottom:10px;padding-top:8px;padding-right:6px;padding-bottom:8px;padding-left:12px;width:60px;-webkit-appearance:none;-moz-appearance:none;appearance:none}.w-commerce-commerceaddtocartquantityinput::-webkit-input-placeholder{color:#999}.w-commerce-commerceaddtocartquantityinput:-ms-input-placeholder{color:#999}.w-commerce-commerceaddtocartquantityinput::-ms-input-placeholder{color:#999}.w-commerce-commerceaddtocartquantityinput::placeholder{color:#999}.w-commerce-commerceaddtocartquantityinput:focus{border-top-color:#3898ec;border-right-color:#3898ec;border-bottom-color:#3898ec;border-left-color:#3898ec;outline-style:none}@media screen and (max-width:479px){.w-commerce-commerceaddtocartquantityinput{font-size:16px}}.body{font-family:Roboto,sans-serif;color:#5c5f66}.product-name{margin-top:0;margin-bottom:0;color:#fdfdfd;font-size:20px;font-weight:500}.product-select{width:100%;margin-bottom:0;padding-right:24px;border:1px none #000;background-color:#c9d8ee;color:#75777a;font-style:normal}.q-num{width:38px;margin-bottom:0;padding-right:0;padding-left:0;-webkit-align-self:center;-ms-flex-item-align:center;-ms-grid-row-align:center;align-self:center;border-style:none;background-color:transparent;color:#fff;font-size:16px;text-align:center}.q-num.cart{-webkit-align-self:flex-start;-ms-flex-item-align:start;align-self:flex-start;border-radius:0;background-color:#202124}.product-field-label{color:#75777a}.product-option-box{max-width:80%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}.option-list{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1}.div-block{margin-left:24px}.q-flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}.q-dec{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:24px;height:24px;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;border-radius:12px;background-color:#26282b;cursor:pointer}.q-dec.alt{display:none;background-color:#18191b}.increment-icon{width:18px}.cart{z-index:999}.q-inc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:24px;height:24px;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;border-radius:12px;background-color:#26282b;cursor:pointer}.q-inc.alt{display:none;background-color:#18191b}.cart-icon{width:24px;height:24px}.cart-quantity{margin-top:-20px;margin-left:-6px;background-color:#ff1f57;color:#fff}.cart-label{color:#fff}.div-block-2{position:absolute;left:auto;top:0;right:0;bottom:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:24px;height:100%;margin-left:24px;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;border-left:1px solid #18191b}
+
+      .scroll-disabled {
+  height: 100%;
+  overflow: hidden;
+}
+.img-full-screen, 
+.img-placeholder {
+  cursor:pointer;
+}
+.img-placeholder {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #fff;
+  z-index: 999;
+}
+      
+.dropdown-toggle::after{
+    display: none;
+}
+
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css");
+
+.accordion{
+	transform: translateZ(0);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.accordion section{
+    min-width: 0 !important;
+}
+
+.accordion > .accordion-toggle{
+	position: absolute;
+	opacity: 0;
+	display: none;
+}
+
+.accordion > label{
+	position: relative;
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 20px;
+	font-size: 14px;
+	font-weight: 700;
+	border-top: 1px solid #ddd;
+	background: #fff;
+	cursor: pointer;
+}
+
+.accordion > label:after {
+  content: '\f078';
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  font-family: fontawesome;
+  transform: rotate(90deg);
+  transition: .3s transform;
+}
+
+.accordion > section{
+	height: 0;
+	transition: .3s all;
+	overflow: hidden;
+}
+
+.accordion > .accordion-toggle:checked ~ label:after{
+ transform: rotate(0deg);
+}
+
+.accordion > .accordion-toggle:checked ~ section{
+  height: 100%;
+}
+
+.accordion > section p {
+  margin: 15px 0;
+  padding: 0 20px;
+  
+}
+.accordion > section ul {
+  margin: 15px 0;
+  padding: 0 20px;
+  
+  width: 60%;
+}
+
+#tabs{
+    min-width: 0px !important;
+}
+
+@media screen and (max-width:1000px) {
+    #contenedor{
+        width: 90vw !important;
+    }
+}
+
+  </style>
+
+
+</head>
+
+<body>
+
+    <div class="banner-bar">
+        <div class="banner-wrap">
+            <div class="div-block-37">
+                <div>NEW!</div>
+            </div>Free handsanitiser with every order. Free Shipping over £40</a>
+        </div>
+    </div>
+    <div class="navigation-wrap">
+        <div data-collapse="medium" data-animation="default" data-duration="400" style="background-color: rgba(255, 255, 255, 0);
+" role="banner" class="navigation w-nav">
+            <div class="navigation-container">
+                <div class="navigation-left">
+                    <a href="#" class="brand w-nav-brand">
+                        <img src="http://ovvetstaging.flywheelsites.com/wp-content/uploads/logo.png" style="width: 150px;" class="flowbase-logo">
+                    </a>
+                </div>
+                <div class="navigation-right">
+                    <nav role="navigation" class="nav-menu w-nav-menu">
+                        <a href="#" class="navigation-link w-nav-link">Dogs</a>
+                        <a href="#" class="navigation-link w-nav-link">Horses</a>
+                        <a href="#" class="navigation-link w-nav-link">Testimonials</a>
+                </div>
+
+                <div data-hover="1" data-delay="0" class="dropdown w-dropdown" role="menu" aria-labelledby="w-dropdown-toggle-2" style="">
+                    <div class="dropdown-toggle w-dropdown-toggle" tabindex="0" id="w-dropdown-toggle-2" aria-controls="w-dropdown-list-2" aria-haspopup="menu" style="outline: currentcolor none medium;
+">
+                        <div class="icon-4 w-icon-dropdown-toggle" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);
+transform-style: preserve-3d;
+"></div>
+                        <div>Resources</div>
+                    </div>
+                    <nav class="navigation-dropdown dropdown-long w-dropdown-list" style="opacity: 0;
+transform: translate3d(0px, 15px, 0px) scale3d(0.9, 0.9, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);
+transform-style: preserve-3d; 
+" id="w-dropdown-list-2">
+                        <div>
+                            <div class="dropdown-wrapper-flex">
+                                <div class="dropdown-column-left">
+                                    <a href="#" class="dropdown-link w-inline-block">
+                                        <div class="icon-wrap">
+                                            <img src="https://assets.website-files.com/5e1d248fa12b0ac621835ebb/5e1d39d6d41c831a78d14ccb_Group%20140.svg" alt="" class="icon">
+                                        </div>
+                                        <div class="nav-content-wrap">
+                                            <div class="dropdown-title">Studies & Research</div>
+
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-link w-inline-block">
+                                        <div class="icon-wrap">
+                                            <img src="https://assets.website-files.com/5e1d248fa12b0ac621835ebb/5e1d39d66761bf8515e7cd39_Group%20186.svg" alt="" class="icon">
+                                        </div>
+                                        <div class="nav-content-wrap">
+                                            <div class="dropdown-title">OVVET Mission
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-link w-inline-block">
+                                        <div class="icon-wrap">
+                                            <img src="https://assets.website-files.com/5e1d248fa12b0ac621835ebb/5e1d39d6d41c831a78d14ccb_Group%20140.svg" alt="" class="icon">
+                                        </div>
+                                        <div class="nav-content-wrap">
+                                            <div class="dropdown-title">Education Centre
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-column-right">
+                                    <img src="#" alt="" class="dropdown-image">
+                                    <div class="dropdown-title">Latest Education Guide</div>
+                                    <a href="#" class="nav-blog-item w-inline-block">
+                                        <div class="nav-link-blog">Learn More</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pointer"></div>
+                        </div>
+                    </nav>
+                </div>
+                </nav>
+                <div class="login-buttons"><a href="#" target="_blank" class="button-menu w-button">Cart</a><a href="#" class="navigation-link w-nav-link">Account</a>
+                </div>
+            </div>
+        </div>
+        <div class="w-nav-overlay" data-wf-ignore=""></div>
+    </div>
+    <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease-out" data-easing2="ease-out" role="banner" class="navigation-mob w-nav">
+        <div class="navigation-container-mob">
+            <a href="#" class="w-nav-brand">
+                <img src="http://ovvetstaging.flywheelsites.com/wp-content/uploads/logo.png" alt="" style="width: 25vw !important;" class="flowbase-logo">
+            </a>
+            <nav role="navigation" class="mobile-nav w-nav-menu">
+                <a href="#" class="mobile-nav-link w-nav-link">Home</a>
+                <a href="#" class="mobile-nav-link w-nav-link">Dogs</a>
+                <a href="#" class="mobile-nav-link w-nav-link">Horses</a>
+                <a href="#" class="mobile-nav-link w-nav-link">Testimonials</a>
+                <div data-delay="0" class="mobile-dropdown w-dropdown" role="menu" aria-labelledby="w-dropdown-toggle-3">
+                    <div class="mobile-toggle w-dropdown-toggle" tabindex="0" id="w-dropdown-toggle-3" aria-controls="w-dropdown-list-3" aria-haspopup="menu" style="outline: currentcolor none medium;
+">
+
+                        <div data-delay="0" class="mobile-dropdown w-dropdown" role="menu" aria-labelledby="w-dropdown-toggle-5">
+                            <div class="mobile-toggle w-dropdown-toggle" tabindex="0" id="w-dropdown-toggle-5" aria-controls="w-dropdown-list-5" aria-haspopup="menu" style="outline: currentcolor none medium;
+">
+                                <div class="w-icon-dropdown-toggle"></div>
+                                <div>Resources</div>
+                            </div>
+                            <nav class="dropdown-list w-dropdown-list" id="w-dropdown-list-5">
+                                <a href="#" class="dropdown-link-mobile w-inline-block">
+                                    <div class="icon-wrap">
+                                        <img src="https://assets.website-files.com/5e1d248fa12b0ac621835ebb/5e1d653b5caa2730d94cc574_icon-3.svg" alt="">
+                                    </div>
+                                    <div class="nav-content-wrap">
+                                        <div class="dropdown-title">Mobile Link 1</div>
+                                        <div class="nav-link-details">Explore and Learn</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-link-mobile w-inline-block">
+                                    <div class="icon-wrap">
+                                        <img src="https://assets.website-files.com/5e1d248fa12b0ac621835ebb/5e1d653b5caa2730d94cc574_icon-3.svg" alt="">
+                                    </div>
+                                    <div class="nav-content-wrap">
+                                        <div class="dropdown-title">Mobile Link 2</div>
+                                        <div class="nav-link-details">Explore and Learn</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-link-mobile w-inline-block">
+                                    <div class="icon-wrap">
+                                        <img src="https://assets.website-files.com/5e1d248fa12b0ac621835ebb/5e1d653b5caa2730d94cc574_icon-3.svg" alt="">
+                                    </div>
+                                    <div class="nav-content-wrap">
+                                        <div class="dropdown-title">Mobile Link 3</div>
+                                        <div class="nav-link-details">Explore and Learn</div>
+                                    </div>
+                                </a>
+                            </nav>
+                            <div class="login-buttons"><a href="#" target="_blank" class="button-menu w-button">Cart</a><a href="#" class="navigation-link w-nav-link">Account</a>
+                            </div>
+
+            </nav>
+            <div class="menu-mob w-nav-button">
+                <div class="w-icon-nav-menu"></div>
+            </div>
+            </div>
+            <div class="w-nav-overlay" data-wf-ignore=""></div>
+            </div>
+            </div>
+
+            <section>
+
+                <div id="Design" class="body-section create">
+                    <div class="ecom-container w-container">
+                        <div class="above-ho-content-back-wrap"><a href="/heirloom-online-prods#Tertiary-Nav" class="back-link-ho">Back to Dog products</a>
+                        </div>
+                        <div class="product-page-wrap">
+                            <div class="product-image-wrap">
+                                <div class="mobile-ecom-prod-wrap">
+                                    <div class="ecom-mobile-title-wrap">
+                                        <h1 class="product-page-title mobile">JointPro</h1>
+                                    </div>
+                                    <a href="#" data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22media%22%7D%5D" data-w-id="184a9a51-a8d9-bbcf-4c92-b990609f2e8e" class="main-image-link w-inline-block w-lightbox">
+                                        <img data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D" src="https://trello-attachments.s3.amazonaws.com/5f436690f57ab8033398f1f6/1000x1000/7bb852544a7b173e7f51482b233b25df/GI-Control-Gold_120g.png"
+                                        class="ecom-main-image" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                        <div style="opacity: 0.5;" class="click-to-expand">Click to expand</div>
+
+                                    </a>
+
+
+                                </div>
+                            </div>
+                            <div class="product-detail-wrap" style="max-width: 55%;">
+                                <h1 class="product-page-title desktop">GI Control</h1>
+
+                                <div class="prod-price product-page">29.99</div>
+                                <div>
+                                    <form data-node-type="commerce-add-to-cart-form" data-commerce-sku-id="5ee0b4370a57d70985c70da7" data-loading-text="Adding to cart..." data-commerce-product-id="5ee0b26b0a57d7968fc70c76" class="w-commerce-commerceaddtocartform default-state">
+                                        <div class="product-option-box">
+                                            <div role="group" data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_sku_values_3dr%22%2C%22to%22%3A%22optionValues%22%7D%5D" data-commerce-product-sku-values="%7B%22ace2cad0224ec464fef445f5a1e8da31%22%3A%22c20dcb5e7462eb2c838180750e6fdae9%22%7D" data-node-type="commerce-add-to-cart-option-list"
+                                            data-commerce-product-id="5ee0b26b0a57d7968fc70c76" class="option-list">
+                                                <div role="group" class="option">
+                                                    <label data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22name%22%7D%7D%5D" class="product-field-label">Size</label>
+                                                    <select id="option-set-ace2cad0224ec464fef445f5a1e8da31" data-node-type="commerce-add-to-cart-option-select" data-commerce-option-set-id="ace2cad0224ec464fef445f5a1e8da31" class="product-select w-select" required="">
+                                                        <option selected="" value="">Bottle Size</option>
+                                                        
+                                                        <option value="c20dcb5e7462eb2c838180750e6fdae9">100g</option>
+                                                        <option value="c20dcb5e7462eb2c838180750e6fdae9">120g</option>
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="div-block">
+                                                <label for="quantity-c14d9de23996a642dd01ede8ab99a07a">Quantity</label>
+                                                <div class="q-flex">
+                                                    <div class="q-dec">
+                                                        <img src="https://assets.website-files.com/5ee0b029fd08842f423da3a6/5ee0c4563d94971fc704554a_minus.svg" alt="" class="increment-icon">
+                                                    </div>
+                                                    <input type="number" pattern="^[0-9]+$" inputmode="numeric" id="quantity-c14d9de23996a642dd01ede8ab99a07a" name="commerce-add-to-cart-quantity-input" min="1" class="w-commerce-commerceaddtocartquantityinput q-num" value="1">
+                                                    <div class="q-inc">
+                                                        <img src="https://assets.website-files.com/5ee0b029fd08842f423da3a6/5ee0c4567c9a41aa6b537ef9_plus.svg" alt="" class="increment-icon">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="submit" data-loading-text="Adding to cart..." value="Add to Cart" class="w-commerce-commerceaddtocartbutton atc-btn"><a href="/checkout" data-node-type="commerce-buy-now-button" style="display:none" class="w-commerce-commercebuynowbutton w-dyn-hide">Buy now</a>
+                                    </form>
+                                    <div style="display:none" class="w-commerce-commerceaddtocartoutofstock">
+                                        <div>This product is out of stock.</div>
+                                    </div>
+                                    <div data-node-type="commerce-add-to-cart-error" style="display:none" class="w-commerce-commerceaddtocarterror">
+                                        <div class=".w-add-to-cart-error-msg" data-w-add-to-cart-quantity-error="Product is not available in this quantity." data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart." data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item."
+                                        data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this site.">Product is not available in this quantity.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="selected-diamond-combo-info">
+                                    <div class="prod-description diamond product-page top" style="font-weight: 700;"> Sensitive tummies are no fun for anyone.</div>
+                                    <div class="prod-description diamond product-page">
+
+                                        GI Care is scientifically formulated with your pets gastro-intestinal system in mind. Intestinal health affects every aspect of bodily function, including the brain and the immune system.
+                                        The carefully selected and proportioned ingredients in GI Care include natural, high quality sources of essential Omega fatty acids, anti-oxidants, prebiotics, vitamins and minerals to support multiple levels of companion animal digestive and systemic health.
+                                    </div>
+                                    <div class="notice-with-icon ship">
+                                        <div class="icon-notice-text">Approved in Canada as a Veterinary Health Product NN.Z8Q6
+
+                                            <br>
+                                            <br>ALL Ingredients are GRAS approved for use in animal supplements in the EU and USA</div>
+                                    </div>
+                                    <div class="choose-text">Specs</div>
+<div id="tabs"style="min-width: 0 !important;">
+                                    <div class="accordion">
+                                        <input id="toggle1" type="radio" class="accordion-toggle" name="toggle" />
+                                        <label for="toggle1">Nutrition</label>
+                                        <section style="display:flex">
+                                            <p class="accordian-description">
+                                                <br>
+                                                Crude Protein: 17%
+                                               <br>
+                                               Total Fat: 6%
+                                               <br>
+                                               Crude Fibre: 8%
+                                               <br>
+                                               Ash: 3%
+                                               <br>
+                                               Moisture: 6%
+                                              
+                                               
+                                              
+                                                </p>
+                                            </div>
+                                      </div>
+                                      
+                                      <div class="accordion">
+                                        <input id="toggle2" type="radio" class="accordion-toggle" name="toggle" />
+                                        <label for="toggle2">Ingredients</label>
+                                        <section  style="display:flex">
+                                            <p class="accordian-description">
+                                                • Lactobacillus delbrueckii lactis
+                                                <br>
+                                                • Ground Golden Flaxseed – ALA (beneficial fatty acid)
+                                                <br>
+                                                • Gluten Free Oat Flour
+                                                <br>
+                                                • Omega-3 fatty acids, EPA + DHA (from fish oil)
+                                                <br>
+                                                • Proprietary yeast source of nucleotides, peptides and amino acids
+                                                <br>
+                                                • Sodium bicarbonate
+                                                <br>
+                                                • Alkosel – Proprietary chelated selenium
+                                                <br>
+                                                • Ganoderma lucidum
+                                                <br>
+                                                • Saccharomyces cerevisiae
+                                                <br>
+                                                <br>
+                                                All ingredients have regulatory approval.
+                                                
+                                                
+                                                
+                                                
+                                            </p>
+                                        </section>
+                                      </div>
+                                      
+                                
+                                      
+                                      <div class="accordion">
+                                        <input id="toggle4" type="radio" class="accordion-toggle" name="toggle" />
+                                        <label for="toggle4">Feeding / Contraindications</label>
+                                        <section style="display:flex">
+                                            
+                                            <p class="accordian-description">Break the capsule and add powder to your pets daily feed. Recommended daily dosage – see table. Double the recommended amount for 3-4 weeks. This loading time will replace their lost reserves and et them back on track to better mobility and comfort.
+                                            <br>
+                                            <br>
+                                            Small dog/cat < 5 – 12kg
+1-3 Caps per day
+                                            <br>
+                                            Medium dog 12 – 25kg
+3-6 Caps per day
+<br>
+Large dog 25 – 50 > kg
+6-10 Caps per day
+<br>
+(1 scoop = 2 grams) one to two times daily, orally administered at time of feeding.
+
+                                            <br>
+                                            <br>
+                                            A daily, oral health care supplement for Dogs and Cats. For Companion animal use only.
+
+ 
+
+Store in a cool dry place, keep out of direct light. Replace lid after use.
+
+ 
+
+Consult your veterinarian if using any other medication or for general advice before use.
+
+ 
+
+Do not exceed recommended dose.
+
+ <br>
+
+Administer during or after the animal has eaten to reduce incidence of gastrointestinal upset.
+
+ 
+
+Store in a cool dry place, keep out of direct sunlight. Reapply lid after use.
+                                            </p>
+                                                  
+                                        </section>
+                                      </div>
+
+                                    
+
+                                    </div>
+                                </section>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
+
+        <div class="section last">
+            <div class="w-layout-grid cta-grid" style="    max-width: 90%;">
+                <div id="w-node-12ae231161c6-fac61a1f" class="cta-content">
+                    <div class="heading2">“All disease begins in the gut” – Hippocrates</div>
+                       
+                    <div class="cta-headline-wrap">
+                        
+                        <p style="margin: 20px 0;">Your  dogs  intestinal  health  can  affect  virtually  every  aspect  of  the  body  from  weight  management  and  digestion  to  overall  performance.<br>
+                              You  can  help  support  your  dog’s  long  term  health  by  supplementing  with  ingredients  like  omega-3  fatty  acids,  antioxidants  and  soluble  fibre  designed  to  maintain  total  body health and optimal intestinal function.<br>
+                              <br>• Supports gastric health
+                              <br>• Supports intestinal health
+                              <br>• Supports tissue anti-oxidant activity
+                              <br>• Supports a healthy gastric and intestinal lining• Supports healthy intestinal microbiota
+                              <br>• Supports intestinal digestion
+                              <br>• Supports intestinal and systemic immunity
+                              <br>GI Control Gold also contains Saccharomyces cerevisiae, an effective probiotic to support healthy digestion.<br>• Supports a balance of intestinal microflora for healthy digestive function
+                    </div>
+                  
+
+                </div>
+                <div id="w-node-12ae231161d0-fac61a1f" class="cta-pictures-feed">
+                   <img style="max-width: 50vw;" src="sod_pyramid.png" alt="">
+                </div>
+
+
+                <!-- @end .clients-wrap -->
+            </div>
+            <!-- @end #clients -->
+        </div>
+
+
+
+        <div class="container-default">
+            <div data-duration-in="300" data-duration-out="100" data-easing="ease-in-out" data-w-id="e684bcc0-7354-384e-6c42-0d0bdea857b4" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); opacity: 1; transform-style: preserve-3d;"
+            class="about-product-tabs w-tabs">
+                <div class="about-product-menu w-tab-menu" role="tablist">
+                    <a data-w-tab="Tab 1" class="tab-link w-inline-block w-tab-link w--current" id="w-tabs-0-data-w-tab-0" href="#w-tabs-0-data-w-pane-0" role="tab" aria-controls="w-tabs-0-data-w-pane-0" aria-selected="true">
+                        <div>Product Description</div>
+                    </a>
+                   
+                    <a data-w-tab="Tab 3" class="tab-link w-inline-block w-tab-link" id="w-tabs-0-data-w-tab-2" href="#w-tabs-0-data-w-pane-2" role="tab" aria-controls="w-tabs-0-data-w-pane-2" aria-selected="false" tabindex="-1">
+                        <div>Research</div>
+                    </a>
+                </div>
+                <div class="tabs-content w-tab-content">
+                    <div data-w-tab="Tab 1" class="about-product-tab w-tab-pane w--tab-active" id="w-tabs-0-data-w-pane-0" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-0" style="opacity: 1; transition: opacity 300ms ease-in-out 0s;">
+                        <div class="rich-text w-richtext">
+                            <h2  class="heading4"> Can good nutrition prevent Leaky Gut Syndrome LGS from occurring?</h2>
+                           <br>
+                            <p>
+                                The short answer is yes, and maybe.
+                                <br>
+Stressors and ingested substances that are detremental to GI health may occur in the presence of great nutrition, such that LGS occurs. These two elements, ingested substances and stressors, also come down to good canine management practices.
+The acid environment of the stomach provides some defense against pathogens but many, including harmful bacteria, fungi, plant matter pass through the stomach to make their way down the intestinal tract. Some act as poisons directly on the intestinal epithelial cells (IECs), causing the intestinal barrier to fail in places, causing leakiness. Some act as poisons against beneficial bacteria and fungi in the GI system, resulting in proliferation of harmful bacteria / fungi that produce and secrete poisons. The innate immune system can deal with small numbers of these harmful organisms and compounds, but are overwhelmed when stressors are excessive.
+<br><br>
+The leaky gut (right picture) allows pathogens to cross the intestinal barrier and infect the intestinal wall, as well as other tissues by transport within the blood. This results in an inflammatory response in the intestine by mounted by the immune system.
+Tight junctions between intestinal epithelial cells help maintain healthy gut barrier function, but are damaged by many pathogens.
+<br><br>
+The keys to a healthy GI system? Good nutrition management and good stress management.
+
+                               </p>
+                        </div>
+                    </div>
+                    
+                    <div data-w-tab="Tab 3" class="about-product-tab w-tab-pane" id="w-tabs-0-data-w-pane-2" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-2" style="">
+                        <div class="rich-text product-description w-richtext">
+                            <br>
+                            <h2 class="heading4"> Functional Foods to Support the Gastro Intestinal Tract</h2 >
+                                <br>
+                                <br>
+                                <h3 class="heading4">Antioxidants: </h3> 
+                            <p style="text-align: center;">
+                                <br>
+                                Free radicals are formed daily which are damaging to the whole body. Antioxidants act as scavengers to prevent cell and tissue damage.Down regulates oxidative stress, support a balanced immune system. They  can help protect the stomach directly from  these damaging oxygen free radicals and inflammation of the mucosa.
+
+                            </p>
+
+                            <h3 class="heading4">Probiotics: </h3> 
+                            <p style="text-align: center;">
+                                <br>
+                                Probiotics - Supports healthy levels of beneficial bacteria, which helps to maintain healthy pH levels. Improves feed efficiency and absorption of nutrients, as well as helping maintain the immune system.
+
+                            </p>
+
+                            <h3 class="heading4">Omega 3: </h3> 
+                            <p style="text-align: center;">
+                                <br>
+                                Omega 3 is required for synthesis of inter cellular connecting substances. The long-chain omega-3 fatty acids (EPA) and (DHA) are important in generating bioactive lipid mediators important in helping reduce inflammation. 
+
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Download" class="body-section">
+            <div class="main-container ecom-bottom w-container">
+                <h5 class="ecom-title bottom">View similar prods<span class="step-span"></span></h5>
+                <div class="w-dyn-list">
+                    <div role="list" class="prods-grid w-dyn-items">
+                        <div role="listitem" class="w-dyn-item">
+                            <div class="prod-link-trigger" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                <a href="#" class="prod-link-block w-inline-block">
+                                    <div data-wf-sku-bindings="#" style="background-image:url(https://trello-attachments.s3.amazonaws.com/5f436690f57ab8033398f1f6/1000x1000/910973bed68b2986b78b2454485d97ce/GI-Control-Gold_100g.png)" class="prod-image"></div>
+                                    <div class="prod-text-area">
+                                        <div class="prod-text-wrap">
+                                            <div id="Scrip-1" class="prod-name-and-price-main-grid" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                                <div class="prod-title">Joint Pro</div>
+                                                <div class="div-block-3">
+                                                    <div class="prod-price">From</div>
+                                                    <div class="prod-price">£39.99</div>
+                                                </div>
+                                                <div class="prod-description"> Clinically proven by peer review to provide relief from pain and improved mobility quickly with daily use. </div>
+                                            </div>
+                                            <div class="prod-link-cta" style="opacity: 0; transform: translate3d(0px, 38px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                                <div class="diamond-link-text">View in detail</div>
+                                                <div class="diamond-link-underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div role="listitem" class="w-dyn-item">
+                            <div class="prod-link-trigger" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                <a href="#" class="prod-link-block w-inline-block">
+                                    <div data-wf-sku-bindings="#" style="background-image:url(https://trello-attachments.s3.amazonaws.com/5f436690f57ab8033398f1f6/1000x1000/692590187b05728b0319cb42d81f0d0d/oralcare_45g.png" alt="" sizes="100vw" srcset="https://trello-attachments.s3.amazonaws.com/5f436690f57ab8033398f1f6/1000x1000/692590187b05728b0319cb42d81f0d0d/oralcare_45g.png)" class="prod-image"></div>
+                                    <div class="prod-text-area">
+                                        <div class="prod-text-wrap">
+                                            <div id="Scrip-1" class="prod-name-and-price-main-grid" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                                <div class="prod-title">Oral Care</div>
+                                                <div class="div-block-3">
+                                                    <div class="prod-price">From</div>
+                                                    <div class="prod-price">£19.99</div>
+                                                </div>
+                                                <div class="prod-description"> 80% of dogs over 2 years have a common dental disease, that is entirely preventable. By three years of age, most dogs have some evidence of periodontal disease.</div>
+                                            </div>
+                                            <div class="prod-link-cta" style="opacity: 0; transform: translate3d(0px, 38px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                                <div class="diamond-link-text">View in detail</div>
+                                                <div class="diamond-link-underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div role="listitem" class="w-dyn-item">
+                            <div class="prod-link-trigger" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                <a href="#   " class="prod-link-block w-inline-block">
+                                    <div data-wf-sku-bindings="#" style="background-image:url(https://trello-attachments.s3.amazonaws.com/5f436690f57ab8033398f1f6/1000x1000/8446481e7a88a147159684366c811b83/omegapro_120g.png)" class="prod-image"></div>
+                                    <div class="prod-text-area">
+                                        <div class="prod-text-wrap">
+                                            <div id="Scrip-1" class="prod-name-and-price-main-grid" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                                <div class="prod-title">Omega Pro</div>
+                                                <div class="div-block-3">
+                                                   
+                                                    <divclass="prod-price">£19.99</div>
+                                                </div>
+                                                <div class="prod-description"> scientifically formulated to provide natural, high-quality ingredients containing essential long chain Omega fatty acids</div>
+                                            </div>
+                                            <div class="prod-link-cta" style="opacity: 0; transform: translate3d(0px, 38px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg); transform-style: preserve-3d;">
+                                                <div class="diamond-link-text">View in detail</div>
+                                                <div class="diamond-link-underline"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container pt-5 border-bottom">
+            <div class="row">
+                <div class="col-md-3 col-sm-12 mb-3 text-center">
+                    <a href="#" class="brand w-nav-brand">
+                        <img src="http://ovvetstaging.flywheelsites.com/wp-content/uploads/logo.png" style="width: 150px;" class="flowbase-logo">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-12">
+
+                    <div class="col-md-3 col-sm-6 col-6 p-0 float-left mb-3">
+                        <h5 class="mb-4 font-weight-bold text-uppercase">Dogs</h5>
+                        <ul class="list-group">
+
+                            <li class="menu-item-2009 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="calm-focus-canine/index.html">Calm &amp; Focus</a>
+                            </li>
+                            <li class="menu-item-2008 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="oral-guard/index.html">Oral Guard</a>
+                            </li>
+                            <li class="menu-item-2007 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="dermalpro-canine/index.html">DermalPro</a>
+                            </li>
+                            <li class="menu-item-2004 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="gi-control-gold/index.html">GI Control Gold</a>
+                            </li>
+                            <li class="menu-item-2467 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="gi_care_canine/index.html">GI Care</a>
+                            </li>
+                            <li class="menu-item-2005 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="jointpro-canine/index.html">JointPro</a>
+                            </li>
+                            <li class="menu-item-2006 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="omegapro-canine/index.html">OmegaPro</a>
+                            </li>
+                            <li class="menu-item-2003 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="oral-care-canine/index.html">Oral Care</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-6 p-0 mb-3 float-left">
+                        <h5 class="mb-4 font-weight-bold text-uppercase">Horses</h5>
+                        <ul class="list-group">
+
+                            <li class="menu-item-2012 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="calm-focus-equine-health/index.html">Calm &amp; Focus</a>
+                            </li>
+                            <li class="menu-item-2020 menu-item menu-item-type-custom menu-item-object-custom sf-std-menu         "><a href="dental-guard-equine-dental-health/index.html">Dental Gaurd</a>
+                            </li>
+                            <li class="menu-item-2019 menu-item menu-item-type-custom menu-item-object-custom sf-std-menu         "><a href="dermalpro-equine-skin-health/index.html">DermalPro</a>
+                            </li>
+                            <li class="menu-item-2013 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="gastric-care/index.html">Gastric Care</a>
+                            </li>
+                            <li class="menu-item-2015 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="gastric-control-gold-advanced-egus-support/index.html">Gastric Control Gold</a>
+                            </li>
+                            <li class="menu-item-2016 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="hoofpro-equine-hoof-support/index.html">HoofPro</a>
+                            </li>
+                            <li class="menu-item-2014 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="jointpro-advanced-equine-support/index.html">JointPro</a>
+                            </li>
+                            <li class="menu-item-2010 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="metabolic-balance/index.html">Metabolic Balance</a>
+                            </li>
+                            <li class="menu-item-2021 menu-item menu-item-type-custom menu-item-object-custom sf-std-menu         "><a href="muscle-ck/index.html">Muscle CK</a>
+                            </li>
+                            <li class="menu-item-2011 menu-item menu-item-type-post_type menu-item-object-page sf-std-menu         "><a href="omega-complete-equine/index.html">Omega Complete</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left">
+                        <h5 class="mb-4 font-weight-bold text-uppercase">Company</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                <a href="#">
+                                    About</a>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                <a href="#">
+                                    Mission</a>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                <a href="#">
+                                    FAQs</a>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                <a href="#">
+                                    Terms &amp; Conditions</a>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                <a href="#">
+                                    Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 float-left">
+                        <h5 class="mb-4 font-weight-bold text-uppercase">Connect</h5>
+                        <ul class="list-group">
+
+                            <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                <a href="#" target="_blank"><i class="fa fa-instagram mr-1" aria-hidden="true"></i> Instagram</a>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                <a href="#" target="_blank"><i class="fa fa-facebook mr-1" aria-hidden="true"></i> Facebook</a>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                                <a href="#" target="_blank"><i class="fa fa-reddit mr-1" aria-hidden="true"></i> Reddit</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="py-4 d-flex justify-content-center align-items-center">
+                        <a class="mr-4" href="../privacy.html">Privacy & terms</a>
+                        <a href="../sitemap.xml">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5eef95f3a061783a33325c52" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://assets.website-files.com/5e1d248fa12b0ac621835ebb/js/webflow-menu-03.5e9ce730d.js" type="text/javascript"></script>
+    <script src="https://uploads-ssl.webflow.com/5eef95f3a061783a33325c52/js/webflow.73ca1ce5a.js" type="text/javascript"></script>
+
+<script>
+
+
+
+</script>
+
+    <script>
+        function beforeAfter() {
+            document.getElementById('separador').style.width = document.getElementById('deslizador').value + "%";
+        }
+    </script>
+
+    <script>
+        const items = document.querySelectorAll(".accordion button");
+
+        function toggleAccordion() {
+            const itemToggle = this.getAttribute('aria-expanded');
+
+            for (i = 0; i < items.length; i++) {
+                items[i].setAttribute('aria-expanded', 'false');
+            }
+
+            if (itemToggle == 'false') {
+                this.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        items.forEach(item = > item.addEventListener('click', toggleAccordion));
+    </script>
+
+  
+
+</body>
+
+</html>
